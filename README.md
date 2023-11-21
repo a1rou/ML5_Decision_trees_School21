@@ -233,5 +233,5 @@ What GBDT model gives the best result? Can you explain why?
 Bonus part marked with * in [Chapter V. Task](#chapter-v-task)
 
 
-💡 [Tap here](https://forms.yandex.ru/cloud/646b46eff47e732ee1311d6f/) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
+>Please leave feedback on the project in the [feedback form.](https://forms.yandex.ru/cloud/646b46eff47e732ee1311d6f/) 
 
