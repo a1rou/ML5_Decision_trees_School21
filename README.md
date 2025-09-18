@@ -191,7 +191,7 @@ model.predict_proba(Xvalid)
 
 5\. Implement the RandomForestClassifier and check its performance. You have to improve the result of a single tree and get at least 0.15 Gini score on the validation dataset. Be able to set a fixed random seed.
 
-6\. Use your DecisionTree design class for GDBT classifier. This class must have *max_depth*, *number_of_trees* and *max_features* attributes. You must compute the gradient of the binary cross-entropy loss function and implement incremental learning: train the next tree using the results of the previous trees.
+6\. Use your DecisionTree design class for GBDT classifier. This class must have *max_depth*, *number_of_trees* and *max_features* attributes. You must compute the gradient of the binary cross-entropy loss function and implement incremental learning: train the next tree using the results of the previous trees.
 
 7\. Use LightGBM, Catboost, and XGBoost for fitting on a training set and prediction on a validation set. Review the documentation of the libraries and fine-tune the algorithms for the task.
 Note key differences between each implementation. Analyze special features of each algorithm (how does "categorical feature" work in Catboost, what is DART mode in XGBoost)?
