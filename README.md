@@ -6,15 +6,21 @@ Summary: This project introduces decision trees (CART) and ensemble methods (Ran
 
 ## Contents
 
-1. [Chapter I. Preamble](#chapter-i-preamble)
-2. [Chapter II. Introduction](#chapter-ii-introduction) \
-    2.1. [Decision Tree](#decision-tree) \
-    2.2. [Pros of CART](#pros-of-cart) \
-    2.3. [Cons of CART](#cons-of-cart) 
-3. [Chapter III. Goal](#chapter-iii-goal) 
-4. [Chapter IV. Instructions](#chapter-iv-instructions)
-5. [Chapter V. Task](#chapter-v-task)
-6. [Chapter VI. Bonus part](#chapter-vi-bonus-part)
+- [Supervised Learning. Decision Trees and ensembles](#supervised-learning-decision-trees-and-ensembles)
+  - [Contents](#contents)
+  - [Chapter I. Preamble](#chapter-i-preamble)
+  - [Chapter II. Introduction](#chapter-ii-introduction)
+    - [Decision Tree](#decision-tree)
+    - [Pros of CART](#pros-of-cart)
+    - [Cons of CART](#cons-of-cart)
+    - [Ensemble methods](#ensemble-methods)
+    - [Gradient Boosting](#gradient-boosting)
+    - [Modern Gradient Boosting Implementations](#modern-gradient-boosting-implementations)
+    - [References](#references)
+  - [Chapter III. Goal](#chapter-iii-goal)
+  - [Chapter IV. Instructions](#chapter-iv-instructions)
+  - [Chapter V. Task](#chapter-v-task)
+  - [Chapter VI. Bonus Part](#chapter-vi-bonus-part)
 
 ## Chapter I. Preamble
 
@@ -87,8 +93,7 @@ Each tree divides the input space into boxes. Averaging bundles of trees results
 Figure (a) illustrates the decision boundary for a single tree, (b) corresponds to averaging a bag of 10 trees, (c) corresponds to a Random Forest model with 50 trees. Note that (c) doesn't have the boundary artifacts of (a).
 
 **ExtraTrees** is another type of tree-based model [ET paper]. It is basically Random Forests without subsampling on rows (we only subsample features), using **extra randomized trees** instead of CART. 
-Extra randomized trees is a CART model if you take a random split value for each feature: we search for the best splits by looking at only 1 random split for each feature. 
-In practice, the ExtraTrees model is less accurate than RandomForest, but less prone to overfitting.
+Extra randomized trees is a CART model when you sample random splits for every feature and search for the best split among all sampled candidates. In practice, the ExtraTrees model is less accurate than RandomForest, but less prone to overfitting.
 
 Unfortunately, methods based on multiple trees lose their interpretability properties: we trade high accuracy for a less clear decision process. There are several approaches to explain black-box algorithms: SHAP, LIME, etc.
 
