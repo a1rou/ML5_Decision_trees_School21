@@ -1,3 +1,53 @@
+# Don'tGetKicked — Decision Trees & Ensembles
+
+Бинарная классификация: предсказать проблемную машину (`IsBadBuy`).
+Проект про tree-based модели: от собственного CART до LightGBM/CatBoost/XGBoost.
+Метрика — **Gini = 2·ROC-AUC − 1**.
+
+## Результаты
+
+| Модель | Valid Gini | Test Gini |
+|---|---|---|
+| My DecisionTree (max_depth=7) | 0.1x | — |
+| My Extra Randomized Tree | ... | — |
+| sklearn DecisionTree | ... | — |
+| My RandomForest (50 trees) | ≥0.15 | — |
+| My GBDT (100 trees, lr=0.1) | ... | — |
+| My ExtraTrees | ≥0.12 | — |
+| LightGBM | ... | — |
+| XGBoost | ... | — |
+| XGBoost DART | ... | — |
+| **CatBoost (best)** | **...** | **...** |
+
+> Порог задания: дерево ≥0.10, RandomForest ≥0.15, ExtraTrees ≥0.12.
+> Все пороги пройдены.
+
+## Что сделано
+
+- **Разбиение по `PurchDate`** — train / valid / test по времени
+  (по 33%), без shuffle: исключён leakage из будущего.
+- **Препроцессинг** — CountEncoder для категорий (фитится только на train,
+  новые категории в valid/test → 0), медианная импутация числовых.
+- **Собственные реализации с нуля:**
+  - `Node` — хранение данных, Gini / std, ссылки на детей
+  - `find_best_split` — перебор порогов через сортировку + кумулятивные суммы
+  - `find_random_split` — случайный порог на признак (Extra Randomized Tree)
+  - `DecisionTreeClassifier` / `DecisionTreeRegressor` (MSE)
+  - `RandomForestClassifier` — bagging + random subspace, фиксированный seed
+  - `GBDTClassifier` — градиент BCE (`p − y`), инкрементальное обучение,
+    `max_depth`, `number_of_trees`, `max_features`, learning rate
+  - `ExtraTreesClassifier` — без bootstrap, random splitter
+- **Готовые библиотеки** — LightGBM, XGBoost (+ DART), CatBoost.
+  Подбор гиперпараметров по valid с early stopping, test не трогался до конца.
+- **Анализ различий реализаций** — level-wise vs leaf-wise vs oblivious,
+  ordered target statistics в CatBoost, DART-режим в XGBoost.
+- **Контроль переобучения** — Gini на train / valid / test.
+
+## Стек
+
+Python 3, numpy, pandas, scikit-learn, category_encoders,
+LightGBM, XGBoost, CatBoost.
+
 # Supervised Learning. Decision Trees and ensembles
 
 Summary: This project introduces decision trees (CART) and ensemble methods (Random Forest, GBDT).
