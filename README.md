@@ -4,24 +4,6 @@
 Проект про tree-based модели: от собственного CART до LightGBM/CatBoost/XGBoost.
 Метрика — **Gini = 2·ROC-AUC − 1**.
 
-## Результаты
-
-| Модель | Valid Gini | Test Gini |
-|---|---|---|
-| My DecisionTree (max_depth=7) | 0.1x | — |
-| My Extra Randomized Tree | ... | — |
-| sklearn DecisionTree | ... | — |
-| My RandomForest (50 trees) | ≥0.15 | — |
-| My GBDT (100 trees, lr=0.1) | ... | — |
-| My ExtraTrees | ≥0.12 | — |
-| LightGBM | ... | — |
-| XGBoost | ... | — |
-| XGBoost DART | ... | — |
-| **CatBoost (best)** | **...** | **...** |
-
-> Порог задания: дерево ≥0.10, RandomForest ≥0.15, ExtraTrees ≥0.12.
-> Все пороги пройдены.
-
 ## Что сделано
 
 - **Разбиение по `PurchDate`** — train / valid / test по времени
